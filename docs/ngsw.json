@@ -1,0 +1,98 @@
+{
+  "configVersion": 1,
+  "timestamp": 1682865515446,
+  "index": "/PWA_Website/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/PWA_Website/favicon.ico",
+        "/PWA_Website/index.html",
+        "/PWA_Website/main.db30257b6f2f6404.js",
+        "/PWA_Website/manifest.webmanifest",
+        "/PWA_Website/polyfills.05a181633a5fa50f.js",
+        "/PWA_Website/runtime.d76798301715e0dd.js",
+        "/PWA_Website/styles.5ed120d79538a859.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/.*"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/PWA_Website/assets/icons/icon-128x128.png",
+        "/PWA_Website/assets/icons/icon-144x144.png",
+        "/PWA_Website/assets/icons/icon-152x152.png",
+        "/PWA_Website/assets/icons/icon-192x192.png",
+        "/PWA_Website/assets/icons/icon-384x384.png",
+        "/PWA_Website/assets/icons/icon-512x512.png",
+        "/PWA_Website/assets/icons/icon-72x72.png",
+        "/PWA_Website/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "jokes-api",
+      "patterns": [
+        "https:\\/\\/api\\.chucknorris\\.io\\/jokes\\/random"
+      ],
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": 900000,
+      "timeoutMs": 5000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/PWA_Website/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/PWA_Website/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/PWA_Website/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/PWA_Website/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/PWA_Website/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/PWA_Website/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/PWA_Website/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/PWA_Website/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/PWA_Website/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/PWA_Website/index.html": "bc36b61d2de7e71930e9695ee4a8101d1cc13c61",
+    "/PWA_Website/main.db30257b6f2f6404.js": "40adc5ba16bbdb2700577509d6a05b18f4deb7d3",
+    "/PWA_Website/manifest.webmanifest": "9806658ba3af7419304e1fb5443f1366086154b8",
+    "/PWA_Website/polyfills.05a181633a5fa50f.js": "a012c981cf5990726ac0eb3f8ef3aadf51a47c13",
+    "/PWA_Website/runtime.d76798301715e0dd.js": "4605b9204cfaa76593cc20b13c598b4fe00a7a91",
+    "/PWA_Website/styles.5ed120d79538a859.css": "6518c6eb751ce4705209af535dc86c2b6245a969"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
