@@ -10,13 +10,15 @@ import { DataService } from './data.service';
 import { NorrisComponent } from './norris/norris.component';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { CameraComponent } from './camera/camera.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NorrisComponent,
     YoutubeComponent,
-    CameraComponent
+    CameraComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
