@@ -1,4 +1,8 @@
 <h1>What Watch</h1>
-<input type="text" [(ngModel)]="searchQuery">
+<input type="text" placeholder="Entrez le titre d'un film" [(ngModel)]="searchQuery">
 <button (click)="fetchMovies(searchQuery)">CLICK</button>
-{{movies | json}}
+<div class="result-container">
+    <ul id="result"></ul>
+</div>
+
+<div [innerHTML]="htmlContent"></div>
