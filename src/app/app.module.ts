@@ -11,6 +11,9 @@ import { NorrisComponent } from './norris/norris.component';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { CameraComponent } from './camera/camera.component';
 import { HomeComponent } from './home/home.component';
+import { CinemaComponent } from './cinema/cinema.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,15 @@ import { HomeComponent } from './home/home.component';
     NorrisComponent,
     YoutubeComponent,
     CameraComponent,
-    HomeComponent
+    HomeComponent,
+    CinemaComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('serviceWorker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
