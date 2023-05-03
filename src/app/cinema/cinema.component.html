@@ -1,0 +1,4 @@
+<h1>What Watch</h1>
+<input type="text" [(ngModel)]="searchQuery">
+<button (click)="fetchMovies(searchQuery)">CLICK</button>
+{{movies | json}}
