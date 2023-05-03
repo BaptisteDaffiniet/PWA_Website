@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -8,7 +8,8 @@ import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-cinema',
   templateUrl: './cinema.component.html',
-  styleUrls: ['./cinema.component.css']
+  styleUrls: ['./cinema.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CinemaComponent {
   result = document.getElementById("result");
@@ -33,10 +34,10 @@ export class CinemaComponent {
         this.totalResults = this.movies.total_results;
         for (let movie of this.movies.results) {
           this.htmlContent += `          
-          <li>
+          <li class ="liCinema">
           <h2>${movie.original_title}</h2>
-          <div class="card-content">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}"></img>
+          <div class="card-content" style="display: flex; flex-wrap:wrap">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="image"></img>
             <div class="infos">
               <p>${movie.overview}</p>
               <p>Popularité : ${movie.popularity} ⭐</p>
