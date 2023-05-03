@@ -11,6 +11,7 @@ import { NorrisComponent } from './norris/norris.component';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { CameraComponent } from './camera/camera.component';
 import { HomeComponent } from './home/home.component';
+import { environment } from '../environments/environment';
 import { CinemaComponent } from './cinema/cinema.component';
 
 import { FormsModule } from '@angular/forms';
@@ -29,12 +30,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('serviceWorker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
