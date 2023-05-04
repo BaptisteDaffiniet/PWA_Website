@@ -1,11 +1,10 @@
 {
   "name": "PWA website",
   "short_name": "PWW",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "white",
-  "theme_color": "white",
-  "orientation": "portrait-primary",
+  "background_color": "#fafafa",
+  "scope": "/",
   "icons": [
     {
       "src": "/assets/icons/icon-72x72.png",
