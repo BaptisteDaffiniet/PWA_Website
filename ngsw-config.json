@@ -42,6 +42,18 @@
         "maxAge": "15m",
         "timeout": "5s"
       }
+    },
+    {
+      "name": "cinema-api",
+      "urls": [
+        "https://api.themoviedb.org/3/search/movie?api_key=8ef00dc66837c5154088c465b1d6412a"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "15m",
+        "timeout": "5s"
+      }
     }
   ]
 }

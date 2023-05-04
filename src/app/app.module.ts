@@ -30,7 +30,11 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
