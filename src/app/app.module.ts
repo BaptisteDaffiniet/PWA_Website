@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
 import { CinemaComponent } from './cinema/cinema.component';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -34,7 +36,7 @@ import { FormsModule } from '@angular/forms';
       enabled: environment.production
     })
   ],
-  providers: [DataService],
+  providers: [DataService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
