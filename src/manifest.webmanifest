@@ -13,6 +13,11 @@
       "sizes": "72x72"
     },
     {
+      "src": "/assets/icons/deroule.png",
+      "type": "image/png",
+      "sizes": "50x50"
+    },
+    {
       "src": "/assets/icons/icon-96x96.png",
       "type": "image/png",
       "sizes": "96x96"
