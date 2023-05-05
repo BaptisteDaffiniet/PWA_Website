@@ -29,17 +29,7 @@ export class AppComponent {
         Notification.requestPermission().then(function (permission) {
           if (permission === 'granted') {
             // user has granted the permission
-            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-              return registration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: urlBase64ToUint8Array("BOsRIBtmJWMYm8qitNbIWds9vRvOb4F5BCJz1l7PfISZba0uC61jVjv60lwBgl0Ur46jc-nOLhp7WowsUaCSW3E")
-              });
-            }).then(function (subscription) {
-              // send the subscription details to the server
-              console.log("Now in")
-            }).catch(function (error) {
-              console.log('Error during service worker registration:', error);
-            });
+
           }
         });
       } else {
