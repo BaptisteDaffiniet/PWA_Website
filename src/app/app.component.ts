@@ -10,6 +10,7 @@ import { Router } from '@angular/router'
 })
 export class AppComponent {
   title = 'websitePWA';
+  isSubscribed = false;
   private readonly publicKey = "BOsRIBtmJWMYm8qitNbIWds9vRvOb4F5BCJz1l7PfISZba0uC61jVjv60lwBgl0Ur46jc-nOLhp7WowsUaCSW3E";
   update: boolean = false;
 
@@ -22,40 +23,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    //this.pushSubscription();
-    if ('Notification' in window) {
-      // the browser supports push notifications
-      if (Notification.permission !== 'granted') {
-        Notification.requestPermission().then(function (permission) {
-          if (permission === 'granted') {
-            // user has granted the permission
-            navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
-              return registration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: urlBase64ToUint8Array("BOsRIBtmJWMYm8qitNbIWds9vRvOb4F5BCJz1l7PfISZba0uC61jVjv60lwBgl0Ur46jc-nOLhp7WowsUaCSW3E")
-              });
-            }).then(function (subscription) {
-              // send the subscription details to the server
-              console.log("Now in")
-            }).catch(function (error) {
-              console.log('Error during service worker registration:', error);
-            });
-          }
-        });
-      } else {
-        navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
-          return registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array("BOsRIBtmJWMYm8qitNbIWds9vRvOb4F5BCJz1l7PfISZba0uC61jVjv60lwBgl0Ur46jc-nOLhp7WowsUaCSW3E")
-          });
-        }).then(function (subscription) {
-          // send the subscription details to the server
-          console.log("already in")
-        }).catch(function (error) {
-          console.log('Error during service worker registration:', error);
-        });
-      }
-    }
+    this.pushSubscription();
   }
 
   goToPage(pageName: string): void {
@@ -63,8 +31,38 @@ export class AppComponent {
     this.router.navigate([pageName]);
   }
 
+  pushSubscription() {
+    if (!this.swPush.isEnabled) {
+      console.log('Notification is not enabled')
+    } else {
+      this.swPush.requestSubscription({
+        serverPublicKey: this.publicKey,
+      }).then(sub => console.log("try 1"))
+        .catch(err => console.log("error"))
+    }
+  }
+  subscribeToPushNotifications() {
+    this.swPush.requestSubscription({
+      serverPublicKey: this.publicKey
+    }).then(subscription => {
+      console.log('Push notification subscription successful', subscription);
+      // Save the subscription to your server database
+      this.isSubscribed = true;
+    }).catch(error => {
+      console.error('Error subscribing to push notifications', error);
+    });
+  }
+
+  unsubscribeFromPushNotifications() {
+    this.swPush.unsubscribe().then(() => {
+      console.log('Push notification unsubscription successful');
+      // Remove the subscription from your server database
+      this.isSubscribed = false;
+    }).catch(error => {
+      console.error('Error unsubscribing from push notifications', error);
+    });
+  }
+
 }
-function urlBase64ToUint8Array(applicationServerPublicKey: any): string | BufferSource | null | undefined {
-  throw new Error('Function not implemented.');
-}
+
 
