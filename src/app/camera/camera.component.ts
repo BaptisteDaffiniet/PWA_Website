@@ -36,4 +36,15 @@ export class CameraComponent {
     }
   }
 
+  async disableCameraPermission() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: false });
+      console.log('Camera permission granted:', stream);
+      // Do something with the camera stream here
+    } catch (error) {
+      console.error('Camera permission denied:', error);
+      // Handle the error here
+    }
+  }
+
 }

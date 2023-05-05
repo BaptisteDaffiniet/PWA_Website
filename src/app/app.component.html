@@ -18,15 +18,12 @@
   </label>
   <label class="logo">PWA Website</label>
   <button (click)="subscribeToPushNotifications()" *ngIf="!isSubscribed">Subscribe to Push Notifications</button>
-  <button (click)="unsubscribeFromPushNotifications()" *ngIf="isSubscribed">Unsubscribe from Push
-    Notifications</button>
   <ul>
 
     <li><a (click)="goToPage('')">Home</a></li>
     <li><a (click)="goToPage('Norris')">Norris</a></li>
-    <li><a (click)="goToPage('Camera')">About</a></li>
-    <li><a (click)="goToPage('Youtube')">Youtube</a></li>
-    <li><a (click)="goToPage('Cinema')">Cinema</a></li>
+    <li><a (click)="goToPage('Camera')">Camera</a></li>
+    <li><a (click)="goToPage('Cinema')">What to Watch</a></li>
     <li><a (click)="goToPage('Login')">Login</a></li>
   </ul>
 </nav>

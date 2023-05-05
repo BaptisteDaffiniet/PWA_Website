@@ -24,6 +24,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.pushSubscription();
+
   }
 
   goToPage(pageName: string): void {
@@ -41,28 +42,15 @@ export class AppComponent {
         .catch(err => console.log("error"))
     }
   }
+
   subscribeToPushNotifications() {
+
     this.swPush.requestSubscription({
       serverPublicKey: this.publicKey
-    }).then(subscription => {
-      console.log('Push notification subscription successful', subscription);
-      // Save the subscription to your server database
-      this.isSubscribed = true;
-    }).catch(error => {
-      console.error('Error subscribing to push notifications', error);
-    });
+    })
+      .then(sub => console.log("sub"))
+      .catch(err => console.error("Could not subscribe to notifications", err));
   }
-
-  unsubscribeFromPushNotifications() {
-    this.swPush.unsubscribe().then(() => {
-      console.log('Push notification unsubscription successful');
-      // Remove the subscription from your server database
-      this.isSubscribed = false;
-    }).catch(error => {
-      console.error('Error unsubscribing from push notifications', error);
-    });
-  }
-
 }
 
 
