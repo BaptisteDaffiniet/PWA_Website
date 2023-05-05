@@ -13,10 +13,15 @@ import { CameraComponent } from './camera/camera.component';
 import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
 import { CinemaComponent } from './cinema/cinema.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
+
+import { AngularFireModule } from '@angular/fire/compat'
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     YoutubeComponent,
     CameraComponent,
     HomeComponent,
-    CinemaComponent
+    CinemaComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [DataService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

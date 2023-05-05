@@ -5,8 +5,10 @@ import { YoutubeComponent } from './youtube/youtube.component';
 import { CameraComponent } from './camera/camera.component';
 import { HomeComponent } from './home/home.component';
 import { CinemaComponent } from './cinema/cinema.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  { path: 'Login', component: LoginComponent },
   { path: 'Norris', component: NorrisComponent },
   { path: 'Youtube', component: YoutubeComponent },
   { path: 'Camera', component: CameraComponent },
