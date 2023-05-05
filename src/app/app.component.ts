@@ -33,13 +33,20 @@ export class AppComponent {
   }
 
   pushSubscription() {
-    if (!this.swPush.isEnabled) {
-      console.log('Notification is not enabled')
+    if (("Notification" in window)) {
+      if (Notification.permission === "granted") {
+        console.log("Notifications are enabled.");
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            console.log("Notifications are enabled.");
+          }
+        });
+      } else {
+        console.log("Notifications are disabled.");
+      }
     } else {
-      this.swPush.requestSubscription({
-        serverPublicKey: this.publicKey,
-      }).then(sub => console.log("try 1"))
-        .catch(err => console.log("error"))
+      console.log("Notifications are not supported in this browser.");
     }
   }
 
