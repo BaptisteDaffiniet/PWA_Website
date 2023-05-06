@@ -22,7 +22,6 @@ export class DataService {
     this.movies = [];
   }
 
-
   gimmeMovies() {
     return (fetchMovies);
   }
