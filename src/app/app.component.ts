@@ -24,7 +24,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.pushSubscription();
-
   }
 
   goToPage(pageName: string): void {
@@ -33,30 +32,35 @@ export class AppComponent {
   }
 
   pushSubscription() {
-    if (("Notification" in window)) {
-      if (Notification.permission === "granted") {
-        console.log("Notifications are enabled.");
-      } else if (Notification.permission !== 'denied') {
-        Notification.requestPermission().then(permission => {
-          if (permission === "granted") {
-            console.log("Notifications are enabled.");
-          }
-        });
-      } else {
-        console.log("Notifications are disabled.");
-      }
+    if (!this.swPush.isEnabled) {
+      console.log('Notification is not enabled')
     } else {
-      console.log("Notifications are not supported in this browser.");
+      this.swPush.requestSubscription({
+        serverPublicKey: this.publicKey,
+      }).then(sub => console.log("try 1"))
+        .catch(err => console.log("error"))
     }
   }
-
   subscribeToPushNotifications() {
-
     this.swPush.requestSubscription({
       serverPublicKey: this.publicKey
-    })
-      .then(sub => console.log("sub"))
-      .catch(err => console.error("Could not subscribe to notifications", err));
+    }).then(subscription => {
+      console.log('Push notification subscription successful', subscription);
+      // Save the subscription to your server database
+      this.isSubscribed = true;
+    }).catch(error => {
+      console.error('Error subscribing to push notifications', error);
+    });
+  }
+
+  unsubscribeFromPushNotifications() {
+    this.swPush.unsubscribe().then(() => {
+      console.log('Push notification unsubscription successful');
+      // Remove the subscription from your server database
+      this.isSubscribed = false;
+    }).catch(error => {
+      console.error('Error unsubscribing from push notifications', error);
+    });
   }
 }
 
