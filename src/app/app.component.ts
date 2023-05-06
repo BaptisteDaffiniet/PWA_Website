@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, enableProdMode } from '@angular/core';
 import { SwPush, SwUpdate } from '@angular/service-worker'
 import { DataService } from './data.service';
 import { Router } from '@angular/router'
@@ -22,9 +22,9 @@ export class AppComponent {
     })
   }
 
-  /*ngOnInit() {
-    this.pushSubscription();
-  }*/
+  ngOnInit() {
+    enableProdMode();
+  }
 
   goToPage(pageName: string): void {
     console.log("Go To Page" + pageName)
